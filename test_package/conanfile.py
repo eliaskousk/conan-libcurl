@@ -3,8 +3,8 @@ from conans import CMake
 import os
 
 ############### CONFIGURE THESE VALUES ##################
-default_user = "lasote"
-default_channel = "testing"
+default_user = "eliaskousk"
+default_channel = "stable"
 #########################################################
 
 channel = os.getenv("CONAN_CHANNEL", default_channel)
@@ -15,7 +15,7 @@ class DefaultNameConan(ConanFile):
     version = "0.1"
     settings = "os", "compiler", "arch", "build_type"
     generators = "cmake"
-    requires = "libcurl/7.50.3@%s/%s" % (username, channel)
+    requires = "libcurl/7.52.1@%s/%s" % (username, channel)
 
     def build(self):
         cmake = CMake(self.settings)
@@ -26,6 +26,6 @@ class DefaultNameConan(ConanFile):
         self.copy(pattern="*.dll", dst="bin", src="bin")
         self.copy(pattern="*.dylib", dst="bin", src="lib")
         self.copy(pattern="*cacert*", dst="bin")
-        
+
     def test(self):
         self.run("cd bin && .%smain" % os.sep)
