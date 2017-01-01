@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/eliaskousk/conan-libcurl.svg)](https://travis-ci.org/eliaskousk/conan-libcurl)
-
+[![Build Status](https://travis-ci.org/eliaskousk/conan-libcurl.svg?branch=release/7.52.1)](https://travis-ci.org/eliaskousk/conan-libcurl)
 
 # conan-libcurl
 
