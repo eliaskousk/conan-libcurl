@@ -21,7 +21,7 @@ class LibCurlConan(ConanFile):
                "with_libidn": [True, False],
                "with_librtmp": [True, False],
                "with_libmetalink": [True, False]}
-    default_options = "shared=True", "with_openssl=True", "disable_threads=False", \
+    default_options = "shared=False", "with_openssl=True", "disable_threads=False", \
                       "with_ldap=False", "custom_cacert=False", "darwin_ssl=True",  \
                       "with_libssh2=True", "with_libidn=False", "with_librtmp=False", \
                       "with_libmetalink=False"
