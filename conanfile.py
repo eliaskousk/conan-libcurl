@@ -34,7 +34,7 @@ class LibCurlConan(ConanFile):
         del self.settings.compiler.libcxx
         if self.options.with_openssl:
             if self.settings.os != "Macos" or not self.options.darwin_ssl:
-                self.requires.add("OpenSSL/1.0.2i@lasote/stable", private=False)
+                self.requires.add("OpenSSL/1.0.2j@eliaskousk/stable", private=False)
                 self.options["OpenSSL"].shared = self.options.shared
             elif self.settings.os == "Macos" and self.options.darwin_ssl:
                 self.requires.add("zlib/1.2.8@lasote/stable", private=False)
