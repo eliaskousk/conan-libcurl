@@ -2,6 +2,7 @@ from conans import ConanFile, ConfigureEnvironment
 import os
 from conans.tools import download
 from conans.tools import unzip, replace_in_file
+from conans.tools import cpu_count
 from conans import CMake
 
 
@@ -133,7 +134,7 @@ CONAN_BASIC_SETUP()
             self.run("cd %s && mkdir _build" % self.ZIP_FOLDER_NAME)
             cd_build = "cd %s/_build" % self.ZIP_FOLDER_NAME
             self.run('%s && cmake .. %s -DBUILD_TESTING=OFF %s %s' % (cd_build, cmake.command_line, ldap, static))
-            self.run("%s && cmake --build . %s" % (cd_build, cmake.build_config))
+            self.run("%s && cmake --build . %s -- -j%s" % (cd_build, cmake.build_config, cpu_count()))
 
     def package(self):
         """ Define your conan structure: headers, libs, bins and data. After building your
