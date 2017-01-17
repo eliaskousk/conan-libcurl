@@ -36,8 +36,6 @@ class LibCurlConan(ConanFile):
             if self.settings.os != "Macos" or not self.options.darwin_ssl:
                 self.requires.add("OpenSSL/1.0.2j@eliaskousk/stable", private=False)
                 self.options["OpenSSL"].shared = self.options.shared
-            elif self.settings.os == "Macos" and self.options.darwin_ssl:
-                self.requires.add("zlib/1.2.8@lasote/stable", private=False)
         else:
             del self.requires["OpenSSL"]
 
@@ -46,8 +44,12 @@ class LibCurlConan(ConanFile):
                 self.options.remove("darwin_ssl")
             except:
                 pass
-        self.requires.add("zlib/1.2.8@lasote/stable", private=False)
+
+        self.requires.add("zlib/1.2.9@lasote/stable", private=False)
+        self.options["zlib"].shared = self.options.shared
+
         self.requires.add("libssh2/1.8.0@eliaskousk/stable", private=False)
+        self.options["libssh2"].shared = self.options.shared
 
     def source(self):
         zip_name = "curl-%s.tar.gz" % self.version
